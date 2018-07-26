@@ -1,0 +1,4 @@
+/.idea/
+/node_modules/
+/spring-petclinic/
+package=lock.json
