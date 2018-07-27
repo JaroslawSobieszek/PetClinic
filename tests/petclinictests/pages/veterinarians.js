@@ -6,8 +6,6 @@ Page.call(this);
 
 var self = this;
 
-this.subMenuItems = element.all(by.css('h3'));
-
 this.get = function () {
   this.load('/vets.html');
 };
@@ -17,9 +15,11 @@ this.getHeadText2 = function () {
     return element.getText();
   });
  return list;
-}
+ }
+ this.getVetList = function() {
+  return element(by.css('#vets'));
 };
-
+};
 VeterinariansPage.prototype = Object.create(Page.prototype);
 VeterinariansPage.prototype.constructor = VeterinariansPage;
 

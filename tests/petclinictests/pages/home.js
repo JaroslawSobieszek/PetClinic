@@ -12,7 +12,9 @@ var HomePage = function() {
    */
   var self = this;
 
-  this.menuItems = element.all(by.css('ul.nav > li > a')); 
+  //this.menuItems = element.all(by.css('ul.nav > li > a')); 
+
+  this.menuItems = element.all(by.css('ul.nav.navbar-nav.navbar-right > li > a'));
 
   this.get = function() {
 	  this.load('/');    
@@ -24,6 +26,10 @@ var HomePage = function() {
 
   this.getMenuTextAtIdx = function(idx) {
     return this.menuItems.get(idx);
+  };
+
+  this.getHeader = function() {
+    return element(by.css('div > h2'));
   };
   
 };
