@@ -12,13 +12,6 @@ var FindOwnerPage = function () {
     this.load('/owners/find');
   };
 
-  this.getHeadText2 = function () {
-    var list = this.subMenuItems.map(function (element) {
-      return element.getText();
-    });
-    return list;
-  }
-
   this.addUser = function (fName, lName, Address, city, phone) {
     element(by.css('body > div > div > a')).click();
     element(by.css('#firstName')).sendKeys(fName);
@@ -33,17 +26,26 @@ var FindOwnerPage = function () {
     return element(by.css('table:nth-child(2)')).isDisplayed();
   };
 
-  this.displayAllOwners = function () {
-    element(by.css('#search-owner-form button')).click();
-  };
-
   this.isOwnerListDisplayed = function () {
+    element(by.css('#search-owner-form button')).click();
     return element(by.css('#vets')).isDisplayed();
+
   };
 
   this.checkPrompt = function () {
-    return element(by.css('span.help-inline'));
+    return element(by.css('span.help-inline')).isDisplayed();
   };
+  
+  this.searchByLastName = function (lName) {
+    element(by.css('#lastName')).sendKeys(lName);
+    element(by.css('#search-owner-form button')).click();
+  };
+
+  this.getFilteredListOwners = function () {
+    return element(by.css('table:nth-child(2)')).isDisplayed();
+  };
+
+
   // this.editUser = function (fName, lName, Address, city, phone) {
   //   element(by.css('body > div > div > a:nth-child(3)')).click();
   //   element(by.css('#firstName')).clear().sendKeys(fName);

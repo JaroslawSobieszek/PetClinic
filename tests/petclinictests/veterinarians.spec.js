@@ -7,6 +7,7 @@ describe('PetClinic veterinarians page', function() {
 	});
 	
 	it('Should present all veterinarians when user is on Veterinarians page', function(){
-			expect(veterinariansPage.getVetList().isDisplayed());
+		var DISPLAYED = true;	
+		expect(veterinariansPage.getVetList()).toBe(DISPLAYED);
 	});
 });

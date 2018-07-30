@@ -10,14 +10,8 @@ this.get = function () {
   this.load('/vets.html');
 };
 
-this.getHeadText2 = function () {
-  var list = this.subMenuItems.map(function (element) {
-    return element.getText();
-  });
- return list;
- }
  this.getVetList = function() {
-  return element(by.css('#vets'));
+  return element(by.css('#vets')).isDisplayed();
 };
 };
 VeterinariansPage.prototype = Object.create(Page.prototype);

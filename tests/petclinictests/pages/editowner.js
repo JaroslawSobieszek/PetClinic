@@ -34,7 +34,7 @@ var EditOwnerPage = function () {
     element(by.xpath('//*[@id="vets"]/tbody/tr[1]/td[1]/a')).click();
     element(by.css('div > a:nth-child(3)')).click();
     var a = element.all(by.css('.div form-control')).getText();
-    console.log("a:" + a.get(1));
+    // console.log("a:" + a.get(1));
     // console.log("a:" + a);
     // owners.push(a);
     // console.log("owners:" + owners);
@@ -43,25 +43,24 @@ var EditOwnerPage = function () {
     // element(by.css('#city')).getAttribute('value');
     // element(by.css('#telephone')).getAttribute('value');
   }
-  this.isOwnerEdited = function () {
-
-    element(by.css('tr:nth-child(1) > td:nth-child(1) > a')).click();
-    element(by.xpath('/html/body/div/div/table[1]/tbody/tr[1]/td')).getText();
-    // console.log("xxxx "+ow);
-
-    // expect(element(by.css('div > table:nth-child(2)')).isDisplayed()).toBe(true);
+  this.getOwnerEdited = function () {
+    return element.all(by.xpath('/html/body/div/div/table[1]/tbody/tr/td')).getText();
+    // return element.all(by.xpath('/html/body/div/div/table[1]/tbody/tr[1]/td/b')).getText();
+  
   };
 
   this.editOwnerCity = function (city) {
     element(by.css('tr:nth-child(1) > td:nth-child(1) > a')).click();
     element(by.css('div > a:nth-child(3)')).click();
     element(by.css('#city')).clear();
+    element(by.css('div:nth-child(2) > div > button')).click();
   };
 
   this.editOwnerTelephone = function (phone) {
     element(by.css('tr:nth-child(1) > td:nth-child(1) > a')).click();
     element(by.css('div > a:nth-child(3)')).click();
     element(by.css('#telephone')).sendKeys(phone);
+    element(by.css('div:nth-child(2) > div > button')).click();
   };
   
   this.displayedPrompt = function () {
@@ -70,8 +69,8 @@ var EditOwnerPage = function () {
     expected(promptLine.visibilityOf(element(by.css('#add-owner-form > div.form-group.has-feedback > div.form-group.has-error > div > span.help-inline')), 1000));
 
   }
-  this.getPromptError= function () {
-    return element(by.css('span.help-inline'));
+  this.getPromptError = function () {
+    return element(by.css('span.help-inline')).isDisplayed();
   }
 };
 EditOwnerPage.prototype = Object.create(Page.prototype);
